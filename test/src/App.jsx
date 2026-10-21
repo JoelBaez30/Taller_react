@@ -1,4 +1,8 @@
 import { useEffect, useState } from "react";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Catalogo from "./components/Catalogo";
+import Footer from "./components/Footer";
 import juegos, { categorias } from "./data/juegos";
 import "./App.css";
 
