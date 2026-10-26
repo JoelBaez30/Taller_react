@@ -1,3 +1,8 @@
+
+/* =========================
+   ESTILOS GENERALES
+========================= */
+
 .app {
   --fondo: #0b0912;
   --panel: #15111f;
@@ -12,7 +17,42 @@
   overflow: hidden;
   color: var(--texto);
   background: var(--fondo);
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+main {
+  flex: 1;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--morado);
+  outline-offset: 3px;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+/* =========================
+   BARRA DE NAVEGACIÓN
+========================= */
 
 .navbar {
   position: sticky;
@@ -27,6 +67,7 @@
   border-bottom: 1px solid #ffffff12;
   background: #0b0912ed;
   backdrop-filter: blur(14px);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .logo {
@@ -67,8 +108,8 @@
   border: 0;
   background: transparent;
   color: var(--secundario);
-  cursor: pointer;
   font-size: 13px;
+  cursor: pointer;
 }
 
 .nav-link {
@@ -81,7 +122,7 @@
 
 .nav-link:hover,
 .nav-link.active {
-  color: #fff;
+  color: #ffffff;
 }
 
 .nav-link.active {
@@ -101,6 +142,42 @@
   font-weight: 700;
 }
 
+.acciones-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.boton-tema {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 9px 12px;
+  border: 1px solid var(--borde);
+  border-radius: 7px;
+  background: var(--panel);
+  color: var(--texto);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background-color 0.25s ease, color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.boton-tema:hover {
+  border-color: var(--morado);
+}
+
+.boton-tema span:first-child {
+  font-size: 16px;
+}
+
+/* =========================
+   BOTONES
+========================= */
+
 .boton {
   display: inline-flex;
   align-items: center;
@@ -114,8 +191,7 @@
   color: #1b1128;
   font-size: 12px;
   font-weight: 800;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .boton:hover {
@@ -133,19 +209,24 @@
   background: #241a32;
 }
 
-main {
-  flex: 1;
+.boton-nav {
+  white-space: nowrap;
 }
+
+/* =========================
+   INICIO / HERO
+========================= */
 
 .hero {
   display: flex;
   align-items: center;
-  min-height: 390px;
-  max-width: 1100px;
   width: 100%;
+  max-width: 1100px;
+  min-height: 390px;
   margin: 0 auto;
   padding: 65px 5%;
   border-bottom: 1px solid #ffffff12;
+  transition: border-color 0.25s ease;
 }
 
 .hero-content {
@@ -164,7 +245,7 @@ main {
 .hero h1,
 .encabezado-catalogo h1 {
   margin: 0;
-  color: #fff;
+  color: #ffffff;
   font-size: clamp(38px, 5vw, 58px);
   font-weight: 800;
   line-height: 1.15;
@@ -174,8 +255,8 @@ main {
 .texto-gradiente {
   color: #d2b5ff;
   background: linear-gradient(100deg, #c4b5fd, #e879f9);
-  -webkit-background-clip: text;
   background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -197,6 +278,7 @@ main {
 
 .estadisticas {
   display: flex;
+  flex-wrap: wrap;
   gap: 32px;
   margin-top: 32px;
 }
@@ -208,7 +290,7 @@ main {
 }
 
 .estadisticas strong {
-  color: #fff;
+  color: #ffffff;
   font-size: 22px;
 }
 
@@ -216,6 +298,10 @@ main {
   color: var(--secundario);
   font-size: 11px;
 }
+
+/* =========================
+   JUEGOS DESTACADOS
+========================= */
 
 .seccion-juegos,
 .catalogo {
@@ -238,7 +324,7 @@ main {
 
 .titulo-seccion h2 {
   margin: 0 0 7px;
-  color: #fff;
+  color: #ffffff;
   font-size: clamp(25px, 3vw, 32px);
   letter-spacing: -1px;
 }
@@ -262,6 +348,10 @@ main {
   color: #f0abfc;
 }
 
+/* =========================
+   CUADRÍCULA Y TARJETAS
+========================= */
+
 .rejilla-juegos {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -274,7 +364,8 @@ main {
   border: 1px solid var(--borde);
   border-radius: 10px;
   background: var(--panel);
-  transition: transform 0.2s, border-color 0.2s;
+  transition: transform 0.2s ease, border-color 0.2s ease,
+    background-color 0.25s ease;
 }
 
 .tarjeta-juego:hover {
@@ -290,10 +381,11 @@ main {
 }
 
 .imagen-juego img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s;
+  transition: transform 0.3s ease;
 }
 
 .tarjeta-juego:hover .imagen-juego img {
@@ -304,7 +396,12 @@ main {
   position: absolute;
   inset: 0;
   content: "";
-  background: linear-gradient(180deg, #0b091220, transparent 45%, #100d1d80);
+  background: linear-gradient(
+    180deg,
+    #0b091220,
+    transparent 45%,
+    #100d1d80
+  );
   pointer-events: none;
 }
 
@@ -317,7 +414,7 @@ main {
   border: 1px solid #ffffff25;
   border-radius: 5px;
   background: #171321e8;
-  color: #fff;
+  color: #ffffff;
   font-size: 10px;
   font-weight: 700;
 }
@@ -334,9 +431,12 @@ main {
   border: 1px solid #ffffff25;
   border-radius: 7px;
   background: #171321ed;
-  color: #fff;
+  color: #ffffff;
   font-size: 21px;
-  cursor: pointer;
+}
+
+.boton-corazon:hover {
+  border-color: #ff9de1;
 }
 
 .boton-corazon.seleccionado {
@@ -350,7 +450,7 @@ main {
 
 .informacion-juego h3 {
   margin: 0;
-  color: #fff;
+  color: #ffffff;
   font-size: 16px;
 }
 
@@ -400,7 +500,7 @@ main {
   color: #e0d0ff;
   font-size: 12px;
   font-weight: 700;
-  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .boton-favorito:hover {
@@ -416,6 +516,10 @@ main {
   background: #e879f915;
   color: #ffb6eb;
 }
+
+/* =========================
+   CATÁLOGO, BÚSQUEDA Y FILTROS
+========================= */
 
 .catalogo {
   min-height: 75vh;
@@ -447,8 +551,10 @@ main {
   border: 1px solid #40334f;
   border-radius: 7px;
   background: #15111f;
-  color: #fff;
+  color: #ffffff;
   font-size: 13px;
+  transition: background-color 0.25s ease, color 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .buscador::placeholder {
@@ -475,14 +581,15 @@ main {
   background: #15111f;
   color: #d1c7df;
   font-size: 12px;
-  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .filtro:hover,
 .filtro.activo {
   border-color: #b69aff;
   background: #a78bfa25;
-  color: #fff;
+  color: #ffffff;
 }
 
 .cantidad-resultados {
@@ -490,6 +597,10 @@ main {
   color: #c6bdd4;
   font-size: 12px;
 }
+
+/* =========================
+   SIN RESULTADOS
+========================= */
 
 .estado-vacio {
   display: flex;
@@ -501,6 +612,7 @@ main {
   border: 1px dashed #49385f;
   border-radius: 10px;
   text-align: center;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .estado-vacio > span {
@@ -510,7 +622,7 @@ main {
 
 .estado-vacio h2 {
   margin: 12px 0 8px;
-  color: #fff;
+  color: #ffffff;
   font-size: 22px;
 }
 
@@ -522,6 +634,10 @@ main {
   line-height: 1.7;
 }
 
+/* =========================
+   PIE DE PÁGINA
+========================= */
+
 .footer {
   display: flex;
   flex-wrap: wrap;
@@ -532,6 +648,7 @@ main {
   padding: 24px max(5%, calc((100% - 1100px) / 2));
   border-top: 1px solid #ffffff12;
   background: #0a0810;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .footer .logo {
@@ -550,11 +667,179 @@ main {
   font-size: 11px;
 }
 
-button:focus-visible,
-input:focus-visible {
-  outline: 2px solid #c4a5fd;
-  outline-offset: 3px;
+/* =========================
+   TEMA CLARO
+========================= */
+
+.app.light {
+  --fondo: #f5f3fa;
+  --panel: #ffffff;
+  --borde: #e0d9eb;
+  --texto: #21182e;
+  --secundario: #62566f;
+  --morado: #7541b8;
+
+  color: var(--texto);
+  background: var(--fondo);
 }
+
+.app.light .navbar {
+  background: #fffffff2;
+  border-bottom-color: #e0d9eb;
+}
+
+.app.light .logo,
+.app.light .hero h1,
+.app.light .titulo-seccion h2,
+.app.light .encabezado-catalogo h1,
+.app.light .informacion-juego h3,
+.app.light .estado-vacio h2,
+.app.light .estadisticas strong {
+  color: #21182e;
+}
+
+.app.light .nav-link {
+  color: #62566f;
+}
+
+.app.light .nav-link:hover,
+.app.light .nav-link.active {
+  color: #542b85;
+}
+
+.app.light .contador {
+  background: #eee3fc;
+  color: #542b85;
+}
+
+.app.light .etiqueta {
+  color: #7541b8;
+}
+
+.app.light .texto-gradiente {
+  background: none;
+  color: #7541b8;
+  -webkit-text-fill-color: #7541b8;
+}
+
+.app.light .hero,
+.app.light .seccion-juegos {
+  border-bottom-color: #e0d9eb;
+}
+
+.app.light .hero-content > p,
+.app.light .titulo-seccion p,
+.app.light .encabezado-catalogo > p,
+.app.light .estadisticas div span,
+.app.light .descripcion-juego,
+.app.light .cantidad-resultados,
+.app.light .estado-vacio p {
+  color: #62566f;
+}
+
+.app.light .tarjeta-juego {
+  background: #ffffff;
+  border-color: #e0d9eb;
+}
+
+.app.light .tarjeta-juego:hover {
+  border-color: #a98bce;
+}
+
+.app.light .lista-plataformas span {
+  background: #f3eef9;
+  border-color: #e0d9eb;
+  color: #443650;
+}
+
+.app.light .buscador,
+.app.light .filtro {
+  background: #ffffff;
+  border-color: #d8cde7;
+  color: #21182e;
+}
+
+.app.light .buscador::placeholder {
+  color: #746782;
+}
+
+.app.light .filtro {
+  color: #62566f;
+}
+
+.app.light .filtro:hover,
+.app.light .filtro.activo {
+  background: #eee3fc;
+  border-color: #a98bce;
+  color: #542b85;
+}
+
+.app.light .boton-secundario {
+  background: #ffffff;
+  border-color: #d8cde7;
+  color: #443650;
+}
+
+.app.light .boton-secundario:hover {
+  background: #f3eef9;
+}
+
+.app.light .boton-favorito {
+  background: #f4edfc;
+  border-color: #d5b9f1;
+  color: #542b85;
+}
+
+.app.light .boton-favorito.guardado {
+  background: #fce8f5;
+  border-color: #edb5db;
+  color: #922568;
+}
+
+.app.light .boton-corazon {
+  color: #542b85;
+}
+
+.app.light .boton-corazon.seleccionado {
+  background: #fce8f5;
+  color: #922568;
+}
+
+.app.light .estado-vacio {
+  border-color: #d8cde7;
+}
+
+.app.light .footer {
+  background: #ffffff;
+  border-top-color: #e0d9eb;
+}
+
+.app.light .footer p,
+.app.light .creditos {
+  color: #62566f;
+}
+
+.app.light .boton-tema {
+  background: #ffffff;
+  border-color: #d8cde7;
+  color: #443650;
+}
+
+.app.light .boton-tema:hover {
+  border-color: #a98bce;
+}
+
+.app.light .enlace {
+  color: #7541b8;
+}
+
+.app.light .enlace:hover {
+  color: #542b85;
+}
+
+/* =========================
+   TABLET
+========================= */
 
 @media (max-width: 850px) {
   .navbar {
@@ -564,6 +849,10 @@ input:focus-visible {
 
   .nav-links {
     gap: 14px;
+  }
+
+  .acciones-nav {
+    gap: 8px;
   }
 
   .hero {
@@ -577,16 +866,41 @@ input:focus-visible {
   .informacion-juego {
     padding: 13px;
   }
+
+  .boton-tema {
+    padding-inline: 9px;
+  }
 }
+
+/* =========================
+   MÓVILES
+========================= */
 
 @media (max-width: 680px) {
   .navbar {
     flex-wrap: wrap;
     padding: 12px 5%;
+    gap: 12px;
   }
 
   .logo {
     font-size: 18px;
+  }
+
+  .acciones-nav {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .boton-tema {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    gap: 0;
+  }
+
+  .boton-tema span:last-child {
+    display: none;
   }
 
   .boton-nav {
@@ -661,6 +975,10 @@ input:focus-visible {
   }
 }
 
+/* =========================
+   TELÉFONOS PEQUEÑOS
+========================= */
+
 @media (max-width: 440px) {
   .rejilla-juegos {
     grid-template-columns: 1fr;
@@ -677,5 +995,13 @@ input:focus-visible {
 
   .estadisticas {
     gap: 16px;
+  }
+
+  .hero h1 {
+    letter-spacing: -1.5px;
+  }
+
+  .encabezado-catalogo h1 {
+    letter-spacing: -1px;
   }
 }

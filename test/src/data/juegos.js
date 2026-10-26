@@ -17,7 +17,7 @@ const juegos = [
       "Descubre una ciudad futurista donde tus decisiones cambian la historia.",
     plataformas: ["PC", "PlayStation", "Xbox"],
     imagen:
-      "https://image.api.playstation.com/vulcan/ap/rnd/202111/3013/6bAF2VVEamgKclalI0oBnoAe.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNgJkK8sGiZ_7-o2nL11MZVwOFyR653RVxtEN-zjenAw&s=10",
   },
   {
     id: 3,
@@ -51,6 +51,28 @@ const juegos = [
   },
   {
     id: 6,
+    nombre: "EA SPORTS FC 26",
+    categoria: "Deportes",
+    descripcion:
+      "Forma tu equipo y vive la emoción del fútbol virtual.",
+    plataformas: ["PC", "PlayStation", "Xbox", "Switch"],
+    imagen:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb643yEZ-KES7zOZi0QwcnX52irx63fX-UM4tUKTa7Vg&s=10",
+      
+  },
+  {
+    id: 7,
+    nombre: "Fornite",
+    categoria: "Deportes",
+    descripcion:
+      "Forma tu equipo y vive la emoción del fútbol virtual.",
+    plataformas: ["PC", "PlayStation", "Xbox", "Switch"],
+    imagen:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb643yEZ-KES7zOZi0QwcnX52irx63fX-UM4tUKTa7Vg&s=10",
+      
+  },
+  {
+    id: 8,
     nombre: "EA SPORTS FC 26",
     categoria: "Deportes",
     descripcion:

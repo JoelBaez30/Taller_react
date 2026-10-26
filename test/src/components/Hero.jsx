@@ -1,8 +1,16 @@
-function Hero({ navegar, totalJuegos, totalFavoritos }) {
+
+function Hero({
+  navegar,
+  totalJuegos,
+  totalFavoritos,
+  totalCategorias,
+}) {
   return (
     <section className="hero">
       <div className="hero-content">
-        <span className="etiqueta">TU PRÓXIMA AVENTURA EMPIEZA AQUÍ</span>
+        <span className="etiqueta">
+          VIDEOJUEGOS PARA TODOS LOS GUSTOS
+        </span>
 
         <h1>
           Encuentra tu próximo{" "}
@@ -10,8 +18,9 @@ function Hero({ navegar, totalJuegos, totalFavoritos }) {
         </h1>
 
         <p>
-          Explora videojuegos, descubre nuevas aventuras y guarda los títulos
-          que quieras jugar después.
+          Explora nuevos mundos, descubre aventuras y encuentra videojuegos
+          que se adapten a tus gustos. Guarda tus favoritos y tenlos siempre
+          a mano.
         </p>
 
         <div className="hero-buttons">
@@ -29,17 +38,17 @@ function Hero({ navegar, totalJuegos, totalFavoritos }) {
 
         <div className="estadisticas">
           <div>
-            <strong>{totalJuegos}</strong>
+            <strong>{String(totalJuegos).padStart(2, "0")}</strong>
             <span>Videojuegos</span>
           </div>
 
           <div>
-            <strong>5</strong>
+            <strong>{String(totalCategorias).padStart(2, "0")}</strong>
             <span>Categorías</span>
           </div>
 
           <div>
-            <strong>{totalFavoritos}</strong>
+            <strong>{String(totalFavoritos).padStart(2, "0")}</strong>
             <span>Favoritos</span>
           </div>
         </div>

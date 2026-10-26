@@ -1,16 +1,23 @@
+
 function Footer({ navegar }) {
   return (
     <footer className="footer">
-      <button className="logo" onClick={() => navegar("inicio")}>
+      <button
+        className="logo"
+        onClick={() => navegar("inicio")}
+        aria-label="GameHub, inicio"
+      >
         <span className="logo-icon">G</span>
         <span>
           Game<span className="logo-accent">Hub</span>
         </span>
       </button>
 
-      <p>Descubre nuevos mundos, un juego a la vez.</p>
+      <p>Un espacio para descubrir tu próximo videojuego.</p>
 
-      <small className="creditos">Proyecto académico · GameHub · 2026</small>
+      <small className="creditos">
+        Proyecto académico · GameHub · 2026
+      </small>
     </footer>
   );
 }

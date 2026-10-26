@@ -1,12 +1,16 @@
+
+import { useState } from "react";
+
 function Catalogo({
   juegos,
   categorias,
   favoritos,
   cambiarFavorito,
   pagina,
+  mostrarEncabezado = true,
 }) {
-  const [busqueda, setBusqueda] = React.useState("");
-  const [categoria, setCategoria] = React.useState("Todos");
+  const [busqueda, setBusqueda] = useState("");
+  const [categoria, setCategoria] = useState("Todos");
 
   const visibles = juegos.filter((juego) => {
     const coincideCategoria =
@@ -28,26 +32,39 @@ function Catalogo({
   });
 
   return (
-    <section className="catalogo">
-      <div className="encabezado-catalogo">
-        <span className="etiqueta">
-          {pagina === "favoritos" ? "TU COLECCIÓN" : "DESCUBRE TU PRÓXIMO JUEGO"}
-        </span>
+    <section className={pagina === "inicio" ? "" : "catalogo"}>
+      {mostrarEncabezado && (
+        <div className="encabezado-catalogo">
+          <span className="etiqueta">
+            {pagina === "favoritos"
+              ? "TU COLECCIÓN PERSONAL"
+              : "CATÁLOGO DE VIDEOJUEGOS"}
+          </span>
 
-        <h1>
-          {pagina === "favoritos" ? (
-            <>Mis <span className="texto-gradiente">favoritos.</span></>
-          ) : (
-            <>Explora el <span className="texto-gradiente">catálogo.</span></>
-          )}
-        </h1>
+          <h1>
+            {pagina === "favoritos" ? (
+              <>
+                Mis <span className="texto-gradiente">favoritos.</span>
+              </>
+            ) : (
+              <>
+                Explora los{" "}
+                <span className="texto-gradiente">juegos.</span>
+              </>
+            )}
+          </h1>
 
-        <p>
-          {pagina === "favoritos"
-            ? `Tienes ${favoritos.length} juegos guardados.`
-            : "Busca por nombre, categoría o plataforma."}
-        </p>
-      </div>
+          <p>
+            {pagina === "favoritos"
+              ? `Tienes ${favoritos.length} ${
+                  favoritos.length === 1
+                    ? "juego guardado"
+                    : "juegos guardados"
+                }.`
+              : "Busca videojuegos por nombre, categoría o plataforma."}
+          </p>
+        </div>
+      )}
 
       <input
         className="buscador"
@@ -55,6 +72,7 @@ function Catalogo({
         placeholder="Buscar videojuegos..."
         value={busqueda}
         onChange={(e) => setBusqueda(e.target.value)}
+        aria-label="Buscar videojuegos"
       />
 
       {pagina === "catalogo" && (
@@ -62,7 +80,7 @@ function Catalogo({
           {categorias.map((item) => (
             <button
               key={item}
-              className={categoria === item ? "filtro activo" : "filtro"}
+              className={`filtro ${categoria === item ? "activo" : ""}`}
               onClick={() => setCategoria(item)}
             >
               {item}
@@ -72,7 +90,8 @@ function Catalogo({
       )}
 
       <p className="cantidad-resultados">
-        {visibles.length} {visibles.length === 1 ? "juego" : "juegos"}
+        {visibles.length}{" "}
+        {visibles.length === 1 ? "juego encontrado" : "juegos encontrados"}
       </p>
 
       {visibles.length > 0 ? (
@@ -83,17 +102,27 @@ function Catalogo({
             return (
               <article className="tarjeta-juego" key={juego.id}>
                 <div className="imagen-juego">
-                  <img src={juego.imagen} alt={juego.nombre} loading="lazy" />
-                  <span className="etiqueta-juego">{juego.categoria}</span>
+                  <img
+                    src={juego.imagen}
+                    alt={`Imagen de ${juego.nombre}`}
+                    loading="lazy"
+                  />
+
+                  <span className="etiqueta-juego">
+                    {juego.categoria}
+                  </span>
 
                   <button
-                    className={guardado
-                      ? "boton-corazon seleccionado"
-                      : "boton-corazon"}
+                    className={`boton-corazon ${
+                      guardado ? "seleccionado" : ""
+                    }`}
                     onClick={() => cambiarFavorito(juego.id)}
-                    aria-label={guardado
-                      ? `Quitar ${juego.nombre} de favoritos`
-                      : `Agregar ${juego.nombre} a favoritos`}
+                    aria-label={
+                      guardado
+                        ? `Quitar ${juego.nombre} de favoritos`
+                        : `Agregar ${juego.nombre} a favoritos`
+                    }
+                    aria-pressed={guardado}
                   >
                     {guardado ? "♥" : "♡"}
                   </button>
@@ -101,9 +130,14 @@ function Catalogo({
 
                 <div className="informacion-juego">
                   <h3>{juego.nombre}</h3>
-                  <p className="descripcion-juego">{juego.descripcion}</p>
 
-                  <span className="titulo-plataformas">PLATAFORMAS</span>
+                  <p className="descripcion-juego">
+                    {juego.descripcion}
+                  </p>
+
+                  <span className="titulo-plataformas">
+                    PLATAFORMAS
+                  </span>
 
                   <div className="lista-plataformas">
                     {juego.plataformas.map((plataforma) => (
@@ -112,12 +146,14 @@ function Catalogo({
                   </div>
 
                   <button
-                    className={guardado
-                      ? "boton-favorito guardado"
-                      : "boton-favorito"}
+                    className={`boton-favorito ${
+                      guardado ? "guardado" : ""
+                    }`}
                     onClick={() => cambiarFavorito(juego.id)}
                   >
-                    {guardado ? "Quitar de favoritos" : "Agregar a favoritos"}
+                    {guardado
+                      ? "Quitar de favoritos"
+                      : "Agregar a favoritos"}
                     <span>{guardado ? "✓" : "+"}</span>
                   </button>
                 </div>
@@ -127,16 +163,18 @@ function Catalogo({
         </div>
       ) : (
         <div className="estado-vacio">
+          <span>♡</span>
+
           <h2>
             {pagina === "favoritos" && !busqueda
-              ? "Aún no tienes favoritos"
-              : "No encontramos juegos"}
+              ? "Todavía no tienes favoritos"
+              : "No se encontraron juegos"}
           </h2>
 
           <p>
             {pagina === "favoritos" && !busqueda
-              ? "Explora el catálogo y guarda los juegos que te gusten."
-              : "Prueba con otro término o categoría."}
+              ? "Ve al catálogo y guarda los videojuegos que más te gusten."
+              : "Prueba con otro nombre o selecciona una categoría diferente."}
           </p>
 
           <button
@@ -153,7 +191,5 @@ function Catalogo({
     </section>
   );
 }
-
-import React from "react";
 
 export default Catalogo;
